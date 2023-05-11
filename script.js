@@ -13,19 +13,43 @@
 // function rot13(encodedStr){
 //    let decodedArr = []; // Your Result goes here
   // Only change code below this line
-	function rot13(str) {
-var decoded = "";
+const lookup = {
+    'A': 'N','B': 'O','C': 'P','D': 'Q',
+    'E': 'R','F': 'S','G': 'T','H': 'U',
+    'I': 'V','J': 'W','K': 'X','L': 'Y',
+    'M': 'Z','N': 'A','O': 'B','P': 'C',
+    'Q': 'D','R': 'E','S': 'F','T': 'G',
+    'U': 'H','V': 'I','W': 'J','X': 'K',
+    'Y': 'L','Z': 'M', '?': '?', ',': ','
+  };
 
-for (var i = 0; i < str.length; i++) {
-var code = str.charCodeAt(i);
-if (code >= 65 && code <= 90) {
-code = ((code - 65 + 13) % 26) + 65;
-}
-decoded += String.fromCharCode(code);
-}
+  function rot13(encodedStr){
+    let outputString = "";
+  for(let i = 0;i<encodedStr.length;i++){
+    if(lookup[encodedStr[i]] === undefined){
+        outputString += encodedStr[i];
+    }else{
+        outputString += lookup[encodedStr[i]]
+    }
+  }
+  return outputString;
+  }
 
-return decoded;
-}
+
+
+// 	function rot13(str) {
+// var decoded = "";
+
+// for (var i = 0; i < str.length; i++) {
+// var code = str.charCodeAt(i);
+// if (code >= 65 && code <= 90) {
+// code = ((code - 65 + 13) % 26) + 65;
+// }
+// decoded += String.fromCharCode(code);
+// }
+
+// return decoded;
+// }
 
   // return ;//return decodedArr
 // }
